@@ -1,0 +1,890 @@
+{
+	"info": {
+		"_postman_id": "994a472b-5077-40b5-9e8b-bc0c1c830c17",
+		"name": "Echo Server",
+		"description": "Enpoints for various http methods. Simply returns a 200 response when the enpoint is called with the correct method",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Method",
+			"item": [
+				{
+					"name": "Method GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Success body set\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.eql(true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/method/get",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"method",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Method POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Success body set\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.eql(true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/method/post",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"method",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Method PUT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Success body set\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.eql(true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/method/PUT",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"method",
+								"PUT"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Method DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Success body set\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.eql(true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/method/delete",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"method",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "METHOD PATCH",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/method/patch",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"method",
+								"patch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Echo",
+			"item": [
+				{
+					"name": "Echo BODY",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is returned\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const requestJson = JSON.parse(pm.request.body.raw);\r",
+									"    pm.expect(responseJson).to.eql(requestJson);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"key\" : \"A String in a JSON body\"}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/echo/body",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"echo",
+								"body"
+							]
+						},
+						"description": "Return the body of the incoming request with the same content type"
+					},
+					"response": []
+				},
+				{
+					"name": "Echo HEADER",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Headers are returned\", function () {\r",
+									"    const reqHeaders = pm.request.headers.toObject();\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.eql(reqHeaders); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "echo-header-1",
+								"value": "value 1",
+								"type": "text"
+							},
+							{
+								"key": "echo-header-2",
+								"value": "value 2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/echo/header",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"echo",
+								"header"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Echo URL Query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"URL Params are returned\", function () {\r",
+									"    const reqParams = pm.request.url.query.toObject();\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.eql(reqParams); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/echo/query?a=1&b=2&c=3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"echo",
+								"query"
+							],
+							"query": [
+								{
+									"key": "a",
+									"value": "1"
+								},
+								{
+									"key": "b",
+									"value": "2"
+								},
+								{
+									"key": "c",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Status Code",
+			"item": [
+				{
+					"name": "Status Code GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is echoed\", () => {\r",
+									"    const reqStatusCode = parseInt(pm.request.url.path[1])\r",
+									"    pm.response.to.have.status(reqStatusCode);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/statuscode/200",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"statuscode",
+								"200"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status Code DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is echoed\", () => {\r",
+									"    const reqStatusCode = parseInt(pm.request.url.path[1])\r",
+									"    pm.response.to.have.status(reqStatusCode);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/statuscode/200",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"statuscode",
+								"200"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bad Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response JSON indicates a failure\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.success).to.be.false;\r",
+									"})\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/statuscode/XYZ",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"statuscode",
+								"XYZ"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Redirect",
+			"item": [
+				{
+					"name": "Redirect",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/redirect/?url=/statuscode/200",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"redirect",
+								""
+							],
+							"query": [
+								{
+									"key": "url",
+									"value": "/statuscode/200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redirect - Follow Disabled",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 302\", function () {\r",
+									"    pm.response.to.have.status(302);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"redirect location header is correct\", function () {\r",
+									"    const location = pm.response.headers.get('Location');\r",
+									"    const passedUrl = pm.request.url.query.get('url')\r",
+									"    pm.expect(location).to.be.eql(passedUrl)\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/redirect/?url=/statuscode/200",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"redirect",
+								""
+							],
+							"query": [
+								{
+									"key": "url",
+									"value": "/statuscode/200"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cookies",
+			"item": [
+				{
+					"name": "Set Cookie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// provided cookie is set\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cookie is set correctly\", function () {\r",
+									"    const reqCookies = JSON.parse(pm.request.body.raw);\r",
+									"\r",
+									"    for (c in reqCookies){\r",
+									"        const cookie = pm.cookies.get(c)\r",
+									"        pm.expect(cookie).to.eql(reqCookies[c])\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mycookie\":\"mycookie value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cookies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cookies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Cookie 400",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"cookieName Σ8Σ\":\"Value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cookies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cookies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Cookies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cookies are returned\", function () {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const cookies = pm.cookies.toObject();\r",
+									"    pm.expect(cookies).to.eql(responseJson);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cookies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cookies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cookie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cookies are removed\", function () {\r",
+									"    const reqCookie = JSON.parse(pm.request.body.raw).cookie\r",
+									"    const hasCookie = pm.cookies.has(reqCookie)\r",
+									"    pm.expect(hasCookie).to.be.false\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"cookie\":\"mycookie\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cookies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cookies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cookie 400",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"cookie\":\"65Σ8Σo\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cookies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cookies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delay",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const delay = parseInt(pm.request.url.path[1]);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is more than delay\", () => {\r",
+									"    \r",
+									"    pm.expect(pm.response.responseTime).to.be.above(delay);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response message reflects delay\", () => {\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.message).to.include(`${delay}ms`)\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/delay/1000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delay",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is more than delay\", () => {\r",
+									"    const delay = parseInt(pm.request.url.path[1]);\r",
+									"    pm.expect(pm.response.responseTime).to.be.above(delay);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is returned\", () => {\r",
+									"    const reqBody = pm.request.body.raw;\r",
+									"    pm.expect(pm.response.text()).eqls(reqBody)\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "Some content to be returned after the delay period\r\n"
+						},
+						"url": {
+							"raw": "{{base_url}}/delay/1000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delay",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
